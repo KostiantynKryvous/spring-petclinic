@@ -1,0 +1,11 @@
+
+---
+- name: Install Docker in Instanse
+  hosts: FINAL_PROJECT
+  become: yes
+
+  roles:
+    - install_docker
+    - install_jenkins
+
+    # 99e4828eb5ba4f969987b52868471c35
