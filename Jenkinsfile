@@ -2,9 +2,12 @@ pipeline {
     agent any
 
     stages {
-        stage('Hello') {
+        stage('Build image') {
             steps {
-                echo 'Hello World !!!!!!!!!!'
+                echo 'Build image...'
+                sh 'docker build . -t petclinic:v002'
+                echo 'Push image...'
+                sh 'docker push gcr.io/fp-epam/fp-petclinic:v002'
             }
         }
     }
