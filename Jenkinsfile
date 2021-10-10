@@ -4,6 +4,7 @@ pipeline {
     stages {
         stage('Build image') {
             steps {
+                sh 'docker ps -a'
                 echo 'Build image...'
                 sh 'docker build . -t petclinic:v002'
                 echo 'Push image...'
