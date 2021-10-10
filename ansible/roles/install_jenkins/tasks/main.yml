@@ -32,7 +32,7 @@
 #   register: result
 
 - name: Add Jenkis user to Docker
-  shell: sudo usermod -a -G docker sa_112056845602035652873
+  shell: sudo usermod -a -G docker jenkins
   register: result
 
 # - name: print init password jenkins
