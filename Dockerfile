@@ -1,5 +1,4 @@
 FROM openjdk:11
-COPY . /usr/src/myapp
+COPY spring-petclinic/target/ /usr/src/myapp/
 WORKDIR /usr/src/myapp
-RUN javac Main.java
-CMD ["java", "Main"]
+CMD ["java", "-jar", "/usr/src/myapp/spring-petclinic-2.5.0-SNAPSHOT.jar"]
