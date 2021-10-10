@@ -26,11 +26,15 @@
     seconds: 30
   become: yes
 
-- name: init password jenkin
-  shell: cat /var/lib/jenkins/secrets/initialAdminPassword
-  changed_when: false
+# - name: init password jenkin
+#   shell: cat /var/lib/jenkins/secrets/initialAdminPassword
+#   changed_when: false
+#   register: result
+
+- name: Add Jenkis user to Docker
+  shell: sudo usermod -a -G docker sa_112056845602035652873
   register: result
 
-- name: print init password jenkins
-  debug:
-    var: result.stdout
+# - name: print init password jenkins
+#   debug:
+#     var: result.stdout
