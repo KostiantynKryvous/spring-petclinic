@@ -4,7 +4,9 @@ pipeline {
     stages {
         stage('Build image') {
             steps {
-                sh 'docker ps -a'
+
+                sh 'gcloud auth activate-service-account acc-for-fp-epam@fp-epam.iam.gserviceaccount.com --key-file="/opt/fp-epam-bfdf0a8eea4b.json"'
+                sh 'gcloud auth configure-docker'
                 echo 'Build image...'
                 sh 'docker build . -t gcr.io/fp-epam/fp-petclinic:v002'
                 echo 'Push image...'
@@ -13,4 +15,3 @@ pipeline {
         }
     }
 }
-// xecStart=/usr/bin/dockerd -H fd:// --containerd=/run/containerd/containerd.sock

@@ -35,6 +35,14 @@
   shell: sudo usermod -a -G docker jenkins
   register: result
 
+- name: Copy key
+  copy:
+    src: /home/kostya/.ssh/fp-epam-bfdf0a8eea4b.json
+    dest: /opt/fp-epam-bfdf0a8eea4b.json
+    owner: jenkins
+    group: jenkins
+    mode: 0664
+
 # - name: print init password jenkins
 #   debug:
 #     var: result.stdout
