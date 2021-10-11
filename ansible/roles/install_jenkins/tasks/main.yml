@@ -43,6 +43,10 @@
     group: jenkins
     mode: 0664
 
+- name: install kubectl
+  shell: 'snap install kubectl --classic'
+  become: yes
+
 # - name: print init password jenkins
 #   debug:
 #     var: result.stdout
