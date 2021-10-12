@@ -14,7 +14,7 @@ pipeline {
                 echo 'Deploy new version...'
                 // Плавающее обновление контейнеров "petclinic" развёртывания "petclinic", обновление образа
                 echo "Choice: v${params.CHOICE}"
-                sh 'kubectl set image deployment/petclinic petclinic=gcr.io/fp-epam/fp-petclinic:v${params.CHOICE}'v
+                sh "kubectl set image deployment/petclinic petclinic=gcr.io/fp-epam/fp-petclinic:v${params.CHOICE}"
 
                 // Откатиться к предыдущему развёртыванию
                 // kubectl rollout undo deployment/petclinic
