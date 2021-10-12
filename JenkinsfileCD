@@ -1,6 +1,10 @@
 pipeline {
     agent any
 
+    parameters {
+        choice(name: 'CHOICE', choices: ['001', '002', '003', '004', '005'], description: 'Pick something')
+    }
+
     stages {
         stage('Deploy') {
             steps {
@@ -9,7 +13,8 @@ pipeline {
                 sh 'gcloud container clusters get-credentials gke-autopilot --region europe-central2 --project fp-epam'
                 echo 'Deploy new version...'
                 // Плавающее обновление контейнеров "petclinic" развёртывания "petclinic", обновление образа
-                sh 'kubectl set image deployment/petclinic petclinic=gcr.io/fp-epam/fp-petclinic:v002'
+                echo "Choice: v${params.CHOICE}"
+                sh 'kubectl set image deployment/petclinic petclinic=gcr.io/fp-epam/fp-petclinic:v${params.CHOICE}'v
 
                 // Откатиться к предыдущему развёртыванию
                 // kubectl rollout undo deployment/petclinic
