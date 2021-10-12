@@ -13,6 +13,8 @@ pipeline {
                 sh 'var=\$( cat version ) && docker push gcr.io/fp-epam/fp-petclinic:v$var'
                 sh 'gcloud container clusters get-credentials gke-autopilot --region europe-central2 --project fp-epam'
                 // sh 'docker ps -a'
+                                // sh 'docker ps -a'
+                                                // sh 'docker ps -a'
             }
         }
     }
