@@ -36,5 +36,13 @@ resource "google_compute_firewall" "default" {
   }
 }
 
+resource "google_compute_global_address" "ip_address" {
+  name = "pet-ip"
+}
+
+output "pet-ip" {
+  value       = google_compute_global_address.ip_address.address
+  description = "Pet IP:"
+}
 
 # 103992699912034200801
