@@ -12,6 +12,7 @@ pipeline {
                 sh 'gcloud auth configure-docker'
                 sh 'gcloud container clusters get-credentials gke-autopilot --region europe-central2 --project fp-epam'
                 echo 'Deploy new version...'
+                
                 // Плавающее обновление контейнеров "petclinic" развёртывания "petclinic", обновление образа
                 echo "Choice: v${params.CHOICE}"
                 sh "kubectl set image deployment/petclinic petclinic=gcr.io/fp-epam/fp-petclinic:v${params.CHOICE}"
